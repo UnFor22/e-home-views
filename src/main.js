@@ -7,6 +7,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'normalize.css/normalize.css'
 import $axios from './utils/request'
+import './style/index.scss'
 
 Vue.use(ElementUI);
 Vue.prototype.$axios = $axios  // 全局导入axios

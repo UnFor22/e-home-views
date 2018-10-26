@@ -1,5 +1,4 @@
 import axios from 'axios'
-import router from 'vue-router'
 import { Message } from 'element-ui';
 
 const baseURL = process.env.BASE_API
@@ -29,7 +28,7 @@ const xhr = {
                         message: res.data.msg,
                         type: 'success'
                     })
-                    router.push('/layout')
+                    this.$router.push('/')
                 }
                 resolve(res.data)
             }).catch(err =>{
@@ -57,12 +56,12 @@ const xhr = {
             // }
             // console.log(computedConfig)
             instance.post(url,data,config).then(res =>{
-                if(res.data.code == 200){
+                if(res.data.code == 403){
                     Message({
                         message: res.data.msg,
                         type: 'success'
                     })
-                    router.push('/layout')
+                    this.$router.push('/')
                 }
                 resolve(res.data)
             }).catch(err =>{

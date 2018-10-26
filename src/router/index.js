@@ -22,6 +22,20 @@ export default new Router({
             title: '首页'
           },
           component: ()=> import('@/views/Home')
+        },
+        {
+          path: 'adminList',
+          meta: {
+            title: '管理员列表'
+          },
+          component: ()=> import('@/views/admin/adminList.vue')
+        },
+        {
+          path: 'addadmin',
+          meta: {
+            title: '添加管理员'
+          },
+          component: ()=> import('@/views/admin/addadmin.vue')
         }
       ]
     }
