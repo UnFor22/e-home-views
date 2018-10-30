@@ -43,7 +43,7 @@
 </template>
 
 <script>
-import uploadAvatar from '../../components/upload-avatar'
+    import uploadAvatar from '../../components/upload-avatar'
     export default {
         components:{
             uploadAvatar

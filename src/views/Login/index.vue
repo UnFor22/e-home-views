@@ -32,7 +32,7 @@
             handleLogin(){
                 this.$axios.post('/admin/adminUser/login',this.formData).then(res => {
                     if(res.code == 200){
-                        this.$message(res.msg)
+                        this.$message.success(res.msg)
                         this.$router.push('/layout')
                     } else {
                         this.$message(res.msg)

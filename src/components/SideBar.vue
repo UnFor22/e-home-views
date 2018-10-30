@@ -31,14 +31,30 @@
                 <el-menu-item index="2-2">添加管理员</el-menu-item>
             </router-link>
         </el-submenu>
-        <el-menu-item index="3">
-            <i class="el-icon-document"></i>
-            <span slot="title">导航三</span>
-        </el-menu-item>
-        <el-menu-item index="4">
-            <i class="el-icon-setting"></i>
-            <span slot="title">导航四</span>
-        </el-menu-item>
+        <el-submenu index="3">
+            <template slot="title">
+                <i class="el-icon-document"></i>
+                <span slot="title">新闻管理</span>
+            </template>
+            <router-link to='/layout/addnews'>
+                <el-menu-item index="3-1">添加新闻</el-menu-item>
+            </router-link>
+            <router-link to='/layout/newslist'>
+                <el-menu-item index="3-2">获取新闻</el-menu-item>
+            </router-link>
+        </el-submenu>
+        <el-submenu index="4">
+            <template slot="title">
+                <i class="el-icon-setting"></i>
+                <span slot="title">轮播图管理</span>
+            </template>
+            <router-link to='/layout/addswiper'>
+                <el-menu-item index="4-1">添加轮播图</el-menu-item>
+            </router-link>
+            <router-link to='/layout/swiperlist'>
+                <el-menu-item index="4-2">轮播图列表</el-menu-item>
+            </router-link>
+        </el-submenu>
         </el-menu>
     </div>
 </template>

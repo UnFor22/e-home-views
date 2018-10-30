@@ -32,3 +32,9 @@ a{
 .app-main .el-card {
     // height: calc(100vh - 160px);
 }
+.el-menu {
+    border-right: none;
+}
+.el-submenu .el-menu-item {
+    min-width: 0;
+}

@@ -3,13 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import $axios from './utils/request'
 import ElementUI from 'element-ui';
+import VueQuillEditor from 'vue-quill-editor'
+
 import 'element-ui/lib/theme-chalk/index.css';
 import 'normalize.css/normalize.css'
-import $axios from './utils/request'
 import './style/index.scss'
+import 'quill/dist/quill.core.css'
+import 'quill/dist/quill.snow.css'
+import 'quill/dist/quill.bubble.css'
 
 Vue.use(ElementUI);
+Vue.use(VueQuillEditor, /* { default global options } */)
 Vue.prototype.$axios = $axios  // 全局导入axios
 
 Vue.config.productionTip = false
