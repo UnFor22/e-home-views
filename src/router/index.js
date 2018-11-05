@@ -64,6 +64,14 @@ export default new Router({
             title: '轮播图列表'
           },
           component: ()=> import('@/views/swiper/swiperlist.vue')
+        },
+        {
+          path: 'editswiper',
+          name: 'editswiper',
+          meta: {
+            title: '编辑轮播图'
+          },
+          component: ()=> import('@/views/swiper/addswiper.vue')
         }
       ]
     }

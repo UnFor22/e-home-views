@@ -74,5 +74,38 @@ const xhr = {
             })
         })
     },
+    patch (url,data,config) {
+        return new Promise ((resolve,reject) => {
+            // const token = localStorage.getItem('token')
+            // let computedConfig = {
+            //     ...config
+            // }
+            // if(token){
+            //     computedConfig = {
+            //         headers: {
+            //             'token':token
+            //         }
+            //     }
+            // }
+            // console.log(computedConfig)
+            instance.patch(url,data,config).then(res =>{
+                if(res.data.code == 403){
+                    Message({
+                        message: res.data.msg,
+                        type: 'success'
+                    })
+                    this.$router.push('/')
+                }
+                resolve(res.data)
+            }).catch(err =>{
+                Message({
+                    message: err.message,
+                    type: 'error'
+                })
+                console.log(err)
+                reject(err)
+            })
+        })
+    },
 }
 export default xhr

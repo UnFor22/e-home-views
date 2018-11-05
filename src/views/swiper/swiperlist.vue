@@ -43,7 +43,7 @@
             <template slot-scope="scope">
                 <el-button
                 size="mini"
-                @click="handleEdit(scope.$index, scope)">编辑</el-button>
+                @click="handleEdit(scope.row._id)">编辑</el-button>
                 <el-button
                 size="mini"
                 type="danger"
@@ -67,7 +67,7 @@
                 this.$axios.get('/admin/swiper').then(res=> {
                     if(res.code == 200){ 
                         this.tableData = res.data
-                        console.log(this.tableData)
+                        // console.log(this.tableData)
                     }
                 })
             },
@@ -76,6 +76,9 @@
             },
             handleDelete(index, row) {
                 console.log(index, row);
+            },
+            handleEdit(id){
+                this.$router.push({name: 'editswiper',query:{id}})
             }
         },
         created(){

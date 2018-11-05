@@ -31,7 +31,8 @@
                     <el-input v-model="form.title" required></el-input>
                 </el-form-item>
                 <el-form-item>
-                    <el-button type="primary" @click="onSubmit">立即创建</el-button>
+                    <el-button type="primary" v-if="!isEdit" @click="onSubmit">立即创建</el-button>
+                    <el-button type="primary" v-else @click="onSave">保存更改</el-button>
                 </el-form-item>
             </el-form>
         </el-card>
@@ -53,15 +54,26 @@
                     img:'',
                     type:''
                 },
-                categories:[]
+                categories:[],
+                isEdit: false
             }
         },
         methods: {
             getCategory(){
+                // console.log(this.$route)
                 this.$axios.get('/admin/category').then(res=>{
                     if(res.code == 200){
                         this.categories = res.data
                         // console.log(this.categories)
+                    }
+                })
+            },
+            getSwiper(){
+                let id = this.$route.query.id
+                this.$axios.get(`/admin/swiper/${id}`).then(res => {
+                    if(res.code == 200){
+                        // console.log(res.data)
+                        this.form = res.data
                     }
                 })
             },
@@ -73,10 +85,43 @@
                     }
                 })
                 // console.log(this.form);
+            },
+            onSave(){
+                let id = this.$route.query.id
+                this.$axios.patch(`/admin/swiper/${id}`,this.form).then(res => {
+                    if(res.code == 200){
+                        this.$message.success(res.msg)
+                        this.$router.push('/layout/swiperlist')
+                    }
+                })
             }
         },
         created(){
+            if(this.$route.name == 'editswiper'){
+                this.isEdit = true
+            } else {
+                this.isEdit = false
+            }
             this.getCategory()
+            if(this.isEdit){
+                this.getSwiper()
+            }
+        },
+        watch: {
+            $route(to, from) {
+                if(to.name == 'editswiper'){
+                    this.isEdit = true
+                } else {
+                    this.isEdit = false
+                    this.form = {
+                        title:'',
+                        sort:'',
+                        status:'',
+                        img:'',
+                        type:''
+                    }
+                }
+            }
         }
     }
 </script>
